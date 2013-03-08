@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660837E616EA952900A80356 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 660837E516EA952900A80356 /* README.md */; };
 		66FB7C3716E7FBDD00D16710 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FB7C3616E7FBDD00D16710 /* UIKit.framework */; };
 		66FB7C3916E7FBDD00D16710 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FB7C3816E7FBDD00D16710 /* Foundation.framework */; };
 		66FB7C3B16E7FBDD00D16710 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FB7C3A16E7FBDD00D16710 /* CoreGraphics.framework */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		660837E516EA952900A80356 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		66FB7C3316E7FBDD00D16710 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66FB7C3616E7FBDD00D16710 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		66FB7C3816E7FBDD00D16710 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +58,7 @@
 		66FB7C2A16E7FBDD00D16710 = {
 			isa = PBXGroup;
 			children = (
+				660837E516EA952900A80356 /* README.md */,
 				66FB7C3C16E7FBDD00D16710 /* Checklists */,
 				66FB7C3516E7FBDD00D16710 /* Frameworks */,
 				66FB7C3416E7FBDD00D16710 /* Products */,
@@ -164,6 +167,7 @@
 				66FB7C4B16E7FBDD00D16710 /* Default@2x.png in Resources */,
 				66FB7C4D16E7FBDD00D16710 /* Default-568h@2x.png in Resources */,
 				66FB7C5016E7FBDD00D16710 /* MainStoryboard.storyboard in Resources */,
+				660837E616EA952900A80356 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +303,7 @@
 				66FB7C5816E7FBDD00D16710 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

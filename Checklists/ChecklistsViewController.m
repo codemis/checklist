@@ -1,29 +1,44 @@
-//
-//  ChecklistsViewController.m
-//  Checklists
-//
-//  Created by Johnathan Pulos on 3/6/13.
-//  Copyright (c) 2013 Johnathan Pulos. All rights reserved.
-//
-
 #import "ChecklistsViewController.h"
 
-@interface ChecklistsViewController ()
-
+@interface ChecklistsViewController ()<UITableViewDataSource,
+UITableViewDelegate>
+@property(strong, nonatomic)NSMutableArray *items;
 @end
 
 @implementation ChecklistsViewController
-
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.items = [[NSMutableArray alloc] init];
+    NSArray *titles = @[@"Walk the dog", @"Feed the cat", @"Feed the zombie", @"Feed the cat the zombie"];
+    for (NSString *title in titles) {
+        NSMutableDictionary *item = [@{@"title": title, @"isChecked": @"NO"} mutableCopy];
+        [self.items addObject:item];
+    }
 }
-
-- (void)didReceiveMemoryWarning
+-(NSInteger)tableView:(UITableView *)tableView
+numberOfRowsInSection:(NSInteger)section
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return [self.items count];
 }
-
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChecklistItem"];
+    NSDictionary *item = self.items[indexPath.row];
+    cell.textLabel.text = item[@"title"];
+    cell.accessoryType = [item[@"isChecked"] isEqual: @"YES"] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    return cell;
+}
+-(void)         tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 @end
