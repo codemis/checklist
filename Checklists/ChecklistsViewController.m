@@ -1,4 +1,5 @@
 #import "ChecklistsViewController.h"
+#import "ChecklistsItem.h"
 
 @interface ChecklistsViewController()
   <UITableViewDataSource,UITableViewDelegate>
@@ -16,8 +17,9 @@
                         @"Wash the zombie",@"Wash the cat",@"Water the lawn",
                         @"Mow the lawn",@"Wash the car",@"Take out the trash"];
     for (NSString *title in titles) { // Why is this curly brace on this line?
-        NSMutableDictionary *item = [@{@"title": title,
-                                     @"isChecked": @NO} mutableCopy];
+        ChecklistsItem *item = [[ChecklistsItem alloc] init];
+        item.text = title;
+        item.checked = NO;
         [self.items addObject:item];
     }
 }
@@ -31,9 +33,9 @@ numberOfRowsInSection:(NSInteger)section
 {
     UITableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"ChecklistItem"];
-    NSMutableDictionary *item = self.items[indexPath.row];
-    cell.textLabel.text = item[@"title"];
-    cell.accessoryType = [item[@"isChecked"] boolValue] ?
+    ChecklistsItem *item = self.items[indexPath.row];
+    cell.textLabel.text = item.text;
+    cell.accessoryType = item.isChecked ?
       UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }
@@ -41,12 +43,13 @@ numberOfRowsInSection:(NSInteger)section
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    ChecklistsItem *item = self.items[indexPath.row];
     if (cell.accessoryType == UITableViewCellAccessoryNone) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        self.items[indexPath.row][@"isChecked"] = @YES;
+        item.checked = YES;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        self.items[indexPath.row][@"isChecked"] = @NO;
+        item.checked = NO;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
